@@ -1,6 +1,11 @@
 package id.technologue.jauharibill.technologue;
 
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -11,7 +16,7 @@ import java.util.ArrayList;
  * Created by jauharibill on 6/22/2018.
  */
 
-public class ListPresidentAdapter {
+public class ListPresidentAdapter extends RecyclerView.Adapter<ListPresidentAdapter.CategoryViewHolder>{
     private Context context;
 
     public ArrayList<President> getListPresident(){
@@ -25,6 +30,7 @@ public class ListPresidentAdapter {
     private ArrayList<President> listPresident;
 
     public ListPresidentAdapter(Context context){
+
         this.context = context;
     }
 
@@ -35,7 +41,7 @@ public class ListPresidentAdapter {
     }
 
     @Override
-    public void onBindViewHolder (CategoryViewHolder parent, int position){
+    public void onBindViewHolder (CategoryViewHolder holder, int position){
         holder.tvName.setText(getListPresident().get(position).getName());
         holder.tvRemarks.setText(getListPresident().get(position).getRemarks());
 
@@ -54,5 +60,12 @@ public class ListPresidentAdapter {
         TextView tvName;
         TextView tvRemarks;
         ImageView imgPhoto;
+
+        public CategoryViewHolder(View itemView){
+            super(itemView);
+            tvName = itemView.findViewById(R.id.tv_item_name);
+            tvRemarks = itemView.findViewById(R.id.tv_item_remarks);
+            imgPhoto = itemView.findViewById(R.id.img_item_photo);
+        }
     }
 }
