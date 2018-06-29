@@ -44,12 +44,15 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.action_list :
                     showRecyclerList();
+                    setTitleActionBar("Mode List");
                 break;
             case R.id.action_grid :
                     showRecyclerGrid();
+                    setTitleActionBar("Mode Grid");
                 break;
             case R.id.action_cardview :
                     showRecyclerCardView();
+                    setTitleActionBar("Mode Card View");
                 break;
         }
 
@@ -68,5 +71,9 @@ public class MainActivity extends AppCompatActivity {
         CardViewPresidentAdapter cardViewViewHolder = new CardViewPresidentAdapter(this);
         cardViewViewHolder.setListPresident(list);
         rvCategory.setAdapter(cardViewViewHolder);
+    }
+
+    public void setTitleActionBar(String title){
+        getSupportActionBar().setTitle(title);
     }
 }
