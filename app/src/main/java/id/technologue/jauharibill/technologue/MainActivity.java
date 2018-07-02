@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView rvCategory;
     private ArrayList<President>list;
+    private ArrayList<News>listNews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
         rvCategory = (RecyclerView)findViewById(R.id.rv_category);
         rvCategory.setHasFixedSize(true);
 
-        list = new ArrayList<>();
+        listNews = new ArrayList<>();
 
-        list.addAll(PresidentData.getListData());
-        showRecyclerList();
+        listNews.addAll(NewsData.getListData());
+        showRecyclerCardView();
     }
 
     private void showRecyclerList(){
@@ -77,14 +78,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void showRecyclerCardView(){
         rvCategory.setLayoutManager(new LinearLayoutManager(this));
-        CardViewPresidentAdapter cardViewViewHolder = new CardViewPresidentAdapter(this);
-        cardViewViewHolder.setListPresident(list);
+        CardViewNewsAdapter cardViewViewHolder = new CardViewNewsAdapter(this);
+        cardViewViewHolder.setListNews(listNews);
         rvCategory.setAdapter(cardViewViewHolder);
 
         ItemClickSupport.addTo(rvCategory).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                showSelectedPresident(list.get(position));
+                showSelectedNews(listNews.get(position));
             }
         });
     }
@@ -95,5 +96,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void showSelectedPresident(President president){
         Toast.makeText(this, "Kamu memilih "+president.getName(), Toast.LENGTH_SHORT).show();
+    }
+    private void showSelectedNews(News news){
+        Toast.makeText(this, "Kamu memilih "+news.getTitle(), Toast.LENGTH_SHORT).show();
     }
 }

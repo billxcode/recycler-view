@@ -18,8 +18,20 @@ public class PresidentData {
             {"Joko Widodo", "Presiden Ketujuh RI", "https://upload.wikimedia.org/wikipedia/commons/1/1c/Joko_Widodo_2014_official_portrait.jpg"}
     };
 
+    public static String[][] dataNews = new String[][]{
+            {"Setelah Fortnite, Ini Game yang Terancam Gagal Cross-Play Karena Sony", "Ulwan Fakhri Noviadhista", "July 2, 2018", "https://technologue.id/wp-content/uploads/2018/07/Fallout-76-source-YouTube-Bethesda-Softworks-324x160.jpg"},
+            {"Setelah Fortnite, Ini Game yang Terancam Gagal Cross-Play Karena Sony", "Ulwan Fakhri Noviadhista", "July 2, 2018", "https://technologue.id/wp-content/uploads/2018/07/Fallout-76-source-YouTube-Bethesda-Softworks-324x160.jpg"},
+            {"Setelah Fortnite, Ini Game yang Terancam Gagal Cross-Play Karena Sony", "Ulwan Fakhri Noviadhista", "July 2, 2018", "https://technologue.id/wp-content/uploads/2018/07/Fallout-76-source-YouTube-Bethesda-Softworks-324x160.jpg"},
+            {"Setelah Fortnite, Ini Game yang Terancam Gagal Cross-Play Karena Sony", "Ulwan Fakhri Noviadhista", "July 2, 2018", "https://technologue.id/wp-content/uploads/2018/07/Fallout-76-source-YouTube-Bethesda-Softworks-324x160.jpg"},
+            {"Setelah Fortnite, Ini Game yang Terancam Gagal Cross-Play Karena Sony", "Ulwan Fakhri Noviadhista", "July 2, 2018", "https://technologue.id/wp-content/uploads/2018/07/Fallout-76-source-YouTube-Bethesda-Softworks-324x160.jpg"},
+            {"Setelah Fortnite, Ini Game yang Terancam Gagal Cross-Play Karena Sony", "Ulwan Fakhri Noviadhista", "July 2, 2018", "https://technologue.id/wp-content/uploads/2018/07/Fallout-76-source-YouTube-Bethesda-Softworks-324x160.jpg"},
+    };
+
     public static ArrayList<President> getListData(){
         President president = null;
+
+
+
         ArrayList<President> list = new ArrayList<>();
         for (int i=0; i< data.length; i++){
             president = new President();
@@ -29,6 +41,8 @@ public class PresidentData {
 
             list.add(president);
         }
+
+
 
         return list;
     }
