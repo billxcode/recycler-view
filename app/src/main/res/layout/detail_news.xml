@@ -1,34 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_activity"
+<android.widget.ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white"
-    tools:context=".MainActivity">
-    <LinearLayout
+    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:id="@id/card_photo"
+        android:layout_marginBottom="4dp"/>
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            style="@style/TextContent.Black"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:textSize="32sp"
-            android:text="Title"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"/>
-        <TextView
-            style="@style/TextContent.Subtitle"
-            android:text="Author"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"/>
-        <TextView
-            style="@style/TextContent"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:text="@string/content_text"
-            android:lineSpacingMultiplier="1"
-            android:textColor="@android:color/black"/>
+        android:layout_below="@id/card_photo"
+        android:id="@+id/card_title"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="Title"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_vertical_margin"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card_title"
+        android:id="@+id/card_author"
+        android:text="Author"
+        android:textSize="12sp"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_vertical_margin"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card_title"
+        android:layout_toRightOf="@+id/card_author"
+        android:id="@+id/card_date"
+        android:textSize="12sp"
+        android:text="Date"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_vertical_margin"/>
 
-    </LinearLayout>
-</ScrollView>
+</android.widget.ScrollView>
+

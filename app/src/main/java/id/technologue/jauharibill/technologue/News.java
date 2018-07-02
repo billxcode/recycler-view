@@ -5,7 +5,7 @@ package id.technologue.jauharibill.technologue;
  */
 
 public class News {
-    private String title, author, date, photo;
+    private String title, author, date, photo, content;
 
     public String getTitle(){
         return title;
@@ -23,6 +23,8 @@ public class News {
         return photo;
     }
 
+    public String getContent() { return content; }
+
     public void setTitle(String title){
         this.title = title;
     }
@@ -37,6 +39,10 @@ public class News {
 
     public void setPhoto(String photo){
         this.photo = photo;
+    }
+
+    public void setContent(String content){
+        this.content = content;
     }
 
 }

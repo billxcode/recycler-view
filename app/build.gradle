@@ -19,6 +19,8 @@ android {
 }
 
 dependencies {
+    compile 'com.synnapps:carouselview:0.1.4'
+    //noinspection GradleCompatible
     compile 'com.android.support:recyclerview-v7:27.1.1'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
