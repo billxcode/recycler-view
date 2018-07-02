@@ -1,5 +1,6 @@
 package id.technologue.jauharibill.technologue;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<President>list;
     private ArrayList<News>listNews;
 
+    private boolean onDetailView = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +35,13 @@ public class MainActivity extends AppCompatActivity {
 
         rvCategory = (RecyclerView)findViewById(R.id.rv_category);
         rvCategory.setHasFixedSize(true);
-
-        listNews = new ArrayList<>();
-
-        listNews.addAll(NewsData.getListData());
+        addAllListToView();
         showRecyclerCardView();
+    }
+
+    private void addAllListToView(){
+        listNews = new ArrayList<>();
+        listNews.addAll(NewsData.getListData());
     }
 
     private void showRecyclerList(){
@@ -93,7 +98,14 @@ public class MainActivity extends AppCompatActivity {
         ItemClickSupport.addTo(rvCategory).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                showSelectedNews(listNews.get(position));
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                News dataNewsPosition = listNews.get(position);
+                intent.putExtra("title", dataNewsPosition.getTitle());
+                intent.putExtra("author", dataNewsPosition.getAuthor());
+                intent.putExtra("date", dataNewsPosition.getDate());
+                intent.putExtra("content", dataNewsPosition.getContent());
+                intent.putExtra("photo", dataNewsPosition.getPhoto());
+                startActivity(intent);
             }
         });
     }
@@ -105,20 +117,9 @@ public class MainActivity extends AppCompatActivity {
     private void showSelectedPresident(President president){
         Toast.makeText(this, "Kamu memilih "+president.getName(), Toast.LENGTH_SHORT).show();
     }
-    private void showSelectedNews(News news){
-        setContentView(R.layout.detail_news);
-        Toast.makeText(this, "Kamu memilih "+news.getTitle(), Toast.LENGTH_SHORT).show();
-        TextView title, author, date, content;
-        ImageView photo;
 
-        title = (TextView) findViewById(R.id.detail_title);
-        author = (TextView) findViewById(R.id.detail_author);
-        date = (TextView) findViewById(R.id.detail_date);
-        content = (TextView) findViewById(R.id.detail_content);
-
-        title.setText(news.getTitle());
-        author.setText(news.getAuthor());
-        date.setText(news.getDate());
-        content.setText(news.getContent());
+    private void showTitleChoosen(String title){
+        Toast.makeText(this, "Kamu memilih "+title, Toast.LENGTH_SHORT).show();
     }
+
 }
