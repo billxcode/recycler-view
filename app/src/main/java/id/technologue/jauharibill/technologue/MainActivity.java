@@ -10,10 +10,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -22,26 +25,10 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<President>list;
     private ArrayList<News>listNews;
 
-    CarouselView carouselView;
-    String[] sampleImages = {
-            "https://technologue.id/wp-content/uploads/2018/07/Peresmian-Infinix-Hot-6-Pro-di-Indonesia-eksklusif-Technologue.id_-324x160.jpg",
-            "https://technologue.id/wp-content/uploads/2018/06/wifi-324x160.jpg",
-            "https://technologue.id/wp-content/uploads/2018/07/Ongki-Kurniawan-Executive-Director-Grab-Indonesia-kanan-berbincang-bersama-Subhan-Aksa-CEO-Bosowa-Automotive-Group-di-dep-324x160.jpg",
-            "https://technologue.id/wp-content/uploads/2018/07/motorola-2018-event-324x160.jpg",
-            "https://technologue.id/wp-content/uploads/2018/07/Ilustrasi-Facebook-source-Facebook--324x160.jpg"
-    };
-    int[] imageDrawable = {R.drawable.image_1, R.drawable.image_2, R.drawable.image_3, R.drawable.image_4, R.drawable.image_5};
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        carouselView =(CarouselView)findViewById(R.id.carouselView);
-        carouselView.setPageCount(sampleImages.length);
-        carouselView.setImageListener(imageListener);
-
 
         rvCategory = (RecyclerView)findViewById(R.id.rv_category);
         rvCategory.setHasFixedSize(true);
@@ -51,14 +38,6 @@ public class MainActivity extends AppCompatActivity {
         listNews.addAll(NewsData.getListData());
         showRecyclerCardView();
     }
-
-    ImageListener imageListener = new ImageListener() {
-        @Override
-        public void setImageForPosition(int position, ImageView imageView) {
-//            imageView.setImageURI(Uri.parse(sampleImages[position]));
-            imageView.setImageResource(imageDrawable[position]);
-        }
-    };
 
     private void showRecyclerList(){
         rvCategory.setLayoutManager(new LinearLayoutManager(this));
@@ -127,6 +106,19 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Kamu memilih "+president.getName(), Toast.LENGTH_SHORT).show();
     }
     private void showSelectedNews(News news){
+        setContentView(R.layout.detail_news);
         Toast.makeText(this, "Kamu memilih "+news.getTitle(), Toast.LENGTH_SHORT).show();
+        TextView title, author, date, content;
+        ImageView photo;
+
+        title = (TextView) findViewById(R.id.detail_title);
+        author = (TextView) findViewById(R.id.detail_author);
+        date = (TextView) findViewById(R.id.detail_date);
+        content = (TextView) findViewById(R.id.detail_content);
+
+        title.setText(news.getTitle());
+        author.setText(news.getAuthor());
+        date.setText(news.getDate());
+        content.setText(news.getContent());
     }
 }
