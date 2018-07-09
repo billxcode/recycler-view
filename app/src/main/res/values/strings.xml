@@ -23,4 +23,10 @@
     <string name="di_jual_oleh">Di Jual Oleh</string>
     <string name="narenda_wicaksono">Narenda Wicaksono</string>
     <string name="beli">Beli</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

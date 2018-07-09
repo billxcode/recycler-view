@@ -19,6 +19,8 @@ android {
 }
 
 dependencies {
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
     compile 'com.synnapps:carouselview:0.1.4'
     //noinspection GradleCompatible
     compile 'com.android.support:recyclerview-v7:27.1.1'
